@@ -110,6 +110,6 @@
   position: absolute;
   transform: rotate(45deg) translate(-50%, 100%);
 }
-.progress:hover .tooltip {
+.progressBar:hover .tooltip {
   display: block !important;
 }

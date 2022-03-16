@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route exect path="/" element={<Home />} />
             <Route
-              path="signup"
+              path="/signup"
               element={
                 <Public>
                   <Signup />
@@ -27,7 +27,7 @@ function App() {
               }
             />
             <Route
-              path="login"
+              path="/login"
               element={
                 <Public>
                   <Login />
@@ -35,7 +35,7 @@ function App() {
               }
             />
             <Route
-              path="quize"
+              path="/quize/:videoId"
               element={
                 <PrivateRoute>
                   <Quize />
@@ -43,7 +43,7 @@ function App() {
               }
             />
             <Route
-              path="result"
+              path="/result/:videoId"
               element={
                 <PrivateRoute>
                   <Result />
