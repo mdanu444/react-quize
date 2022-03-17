@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import classes from "./../styles/ProgressBar.module.css";
 import Button from "./Button";
 export default function ProgressBar({
@@ -7,6 +8,21 @@ export default function ProgressBar({
   videoId,
   currentQuestion,
 }) {
+  const progress = ((currentQuestion + 1) / 4) * 100;
+  const [show, setShow] = useState(false);
+  const tooltipRef = useRef();
+
+  function toggleTooltip() {
+    if (show) {
+      setShow(false);
+      tooltipRef.current.style.display = "none";
+    } else {
+      setShow(true);
+      tooltipRef.current.style.display = "block";
+      tooltipRef.current.style.left = `calc(${progress}% - 65px)`;
+    }
+  }
+
   return (
     <div className={classes.progressBar}>
       <div className={classes.backButton} onClick={prev}>
@@ -14,17 +30,19 @@ export default function ProgressBar({
       </div>
 
       <div className={classes.rangeArea}>
-        <div className={classes.tooltip}>
-          {((currentQuestion + 1) / 4) * 100 + "%"}
+        <div ref={tooltipRef} className={classes.tooltip}>
+          {progress + "%"}
         </div>
         <div className={classes.rangeBody}>
           <div
             className={classes.progress}
-            style={{ width: ((currentQuestion + 1) / 4) * 100 + "%" }}
+            onMouseEnter={toggleTooltip}
+            onMouseLeave={toggleTooltip}
+            style={{ width: progress + "%" }}
           ></div>
         </div>
       </div>
-      {((currentQuestion + 1) / 4) * 100 === 100 ? (
+      {progress === 100 ? (
         <Button onClick={submit} className={`${classes.next}`}>
           <span>Submit Quize</span>
           <span className="material-icons-outlined"> arrow_forward </span>
