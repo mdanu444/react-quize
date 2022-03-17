@@ -87,6 +87,7 @@ export default function Quize() {
           <Answer
             options={qna[currentQuestion].options}
             myfun={ansWerHandler}
+            input
           />
           <ProgressBar
             next={nextBtn}

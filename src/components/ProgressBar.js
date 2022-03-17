@@ -26,7 +26,7 @@ export default function ProgressBar({
       </div>
       {((currentQuestion + 1) / 4) * 100 === 100 ? (
         <Button onClick={submit} className={`${classes.next}`}>
-          <span>Submit</span>
+          <span>Submit Quize</span>
           <span className="material-icons-outlined"> arrow_forward </span>
         </Button>
       ) : (
